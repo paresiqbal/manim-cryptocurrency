@@ -2,7 +2,7 @@ from manim import *
 
 class CryptoReveal(Scene):
     def construct(self):
-        font_size = 65
+        font_size = 50
         font = "KH Interference Trial"  # Replace if you want another font
 
         # Step 1: Write "CRYPTOCURRENCY" at Y=1
@@ -61,4 +61,27 @@ class CryptoReveal(Scene):
         padlock.scale(0.5)  # Resize if needed
         padlock.move_to(UP * 2)  # Move to X=2, Y=0
         self.play(FadeIn(padlock), run_time=1)
+        self.wait(2)
+
+     # Step 6: Remove padlock and move "CRYPTOCURRENCY" to the left
+        self.play(
+            FadeOut(padlock),
+            full_word.animate.move_to(LEFT * 4),
+            run_time=1
+        )
+
+        # Step 7: Show "=" at center and "UANG DIGITAL" at X = 4
+        not_equal = Text("≠", font_size=font_size, color=WHITE)
+        not_equal.move_to(ORIGIN)
+        self.play(FadeIn(not_equal), run_time=1)
+
+        uang_digital = Text("UANG DIGITAL", font_size=font_size, color=YELLOW, font=font)
+        uang_digital.move_to(RIGHT * 4)
+
+        self.play(
+            FadeIn(not_equal),
+            FadeIn(uang_digital),
+            run_time=1
+        )
+
         self.wait(2)
